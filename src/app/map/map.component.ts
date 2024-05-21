@@ -2,8 +2,8 @@ import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from '../marker.service';
 
-const iconRetinaUrl = 'assets/marker-icon-2x.png';
-const iconUrl = 'assets/marker-icon.png';
+const iconRetinaUrl = '../../assets/marker-icon-2x.png';
+const iconUrl = '../../assets/marker-icon.png';
 const iconDefault = L.icon({
   iconRetinaUrl,
   iconUrl,
@@ -20,23 +20,34 @@ L.Marker.prototype.options.icon = iconDefault;
   styleUrl: './map.component.css'
 })
 export class MapComponent implements AfterViewInit {
-  private map!:L.Map
+  private map!: L.Map
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [ -7.25741, 112.74523 ],
-      zoom: 8
+      center: [-7.25741, 112.74523],
+      zoom: 8,
+      zoomControl: false
     });
 
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      minZoom: 3,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    L.control.zoom({
+      position: 'bottomright'
+    }).addTo(this.map);
+
+    // Base Layer
+    var baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> </a>'
     });
 
-    tiles.addTo(this.map);
+    // Seamark Layer
+    var seamarkLayer = L.tileLayer('https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://www.openseamap.org">OpenSeaMap</a> contributors'
+    });
+
+    baseLayer.addTo(this.map);
+    seamarkLayer.addTo(this.map);
   }
-  
+
   constructor(private markerService: MarkerService) { }
 
   ngAfterViewInit(): void {
