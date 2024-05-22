@@ -1,4 +1,4 @@
-<c-sidebar visible #sidebar1="cSidebar" class="border-end">
+<!-- <c-sidebar visible #sidebar1="cSidebar" class="border-end">
   <c-sidebar-header class="border-bottom">
     <c-sidebar-brand>AIS PPNS</c-sidebar-brand>
   </c-sidebar-header>
@@ -14,7 +14,22 @@
   <c-sidebar-footer class="border-top" style="cursor: pointer;">
     <button cSidebarToggler="sidebar1" type="button" title="Toggle Sidebar"></button>
   </c-sidebar-footer>
-</c-sidebar>
+</c-sidebar> -->
 
+<c-sidebar visible #sidebar1="cSidebar" class="border-end sidebar sidebar-dark">
+  <c-sidebar-header class="border-bottom">
+    <c-sidebar-brand>AIS PPNS</c-sidebar-brand>
+  </c-sidebar-header>
+  <c-sidebar-nav>
+    <ng-container *ngFor="let item of navItems">
+      <li class="nav-item">
+        <a [routerLink]="item.url" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+          <c-icon [name]="item.iconComponent.name" class="nav-icon"></c-icon>
+          <span class="nav-text">{{ item.name }}</span>
+        </a>
+      </li>
+    </ng-container>
+  </c-sidebar-nav>
+</c-sidebar>
 
 

@@ -11,6 +11,7 @@ import { SidebarModule } from '@coreui/angular';
 import { TableModule, UtilitiesModule } from '@coreui/angular';
 import { SpinnerModule } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
+import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,11 +44,14 @@ import { FooterComponent } from './footer/footer.component';
     TableModule,
     UtilitiesModule,
     SpinnerModule,
-    FormsModule
+    FormsModule,
+    IconModule,
+    IconSetModule
   ],
   providers: [
     MarkerService,
-    PopupService
+    PopupService,
+    IconSetService
   ],
   bootstrap: [AppComponent]
 })

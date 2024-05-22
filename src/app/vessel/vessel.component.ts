@@ -15,7 +15,6 @@ interface Vessel {
 export class VesselComponent implements OnInit {
   vessels: Vessel[] = [];
   filteredVessels: Vessel[] = [];
-  searchQuery: string = '';
 
   constructor(private vesselService: VesselService) { }
 
@@ -41,13 +40,5 @@ export class VesselComponent implements OnInit {
     });
 
     return result.sort((a, b) => a.name.localeCompare(b.name));
-  }
-
-  search(): void {
-    const query = this.searchQuery.toLowerCase();
-    this.filteredVessels = this.vessels.filter(vessel =>
-      vessel.name.toLowerCase().includes(query) ||
-      vessel._id.toString().includes(query)
-    );
   }
 }

@@ -1,30 +1,109 @@
-/* sidebar.component.css */
+:root {
+    --cui-sidebar-bg: #29333C;
+    /* Background color of the sidebar */
+    --cui-sidebar-color: #fff;
+    /* Text color of the sidebar */
+    --cui-sidebar-nav-link-active-bg: #0056b3;
+    /* Background color of the active link */
+    --cui-sidebar-nav-link-active-color: #fff;
+    /* Text color of the active link */
+    --cui-sidebar-nav-link-hover-bg: #444;
+    /* Background color of the hovered link */
+    --cui-sidebar-nav-link-hover-color: #fff;
+    /* Text color of the hovered link */
+}
 
 .sidebar {
-    position: fixed;
-    /* Fix it to the side */
-    width: 250px;
-    /* Match the width in the main layout */
-    height: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
+    width: 60px;
+    /* Collapsed width */
+    transition: width 0.3s, padding 0.3s;
+    overflow-x: hidden;
+    background-color: var(--cui-sidebar-bg);
+    color: var(--cui-sidebar-color);
 }
 
-.sidebar ul {
+.sidebar:hover {
+    width: 250px;
+    /* Expanded width on hover */
+}
+
+.c-sidebar-header,
+.c-sidebar-footer {
+    overflow: hidden;
+}
+
+.c-sidebar-nav {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
-.sidebar ul li {
+.nav-item {
     margin: 10px 0;
 }
 
-.sidebar ul li a {
-    color: #fff;
+.nav-link {
+    color: var(--cui-sidebar-color);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s, padding 0.3s;
 }
 
-.sidebar ul li a:hover {
-    text-decoration: underline;
+.nav-link:hover {
+    background-color: var(--cui-sidebar-nav-link-hover-bg);
+    color: var(--cui-sidebar-nav-link-hover-color);
+}
+
+.nav-link.active {
+    background-color: var(--cui-sidebar-nav-link-active-bg);
+    color: var(--cui-sidebar-nav-link-active-color);
+}
+
+.nav-icon {
+    margin-right: 10px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.nav-text {
+    display: none;
+    margin-left: 10px;
+}
+
+.sidebar:hover .nav-text {
+    display: inline;
+}
+
+.c-sidebar-nav .nav-link {
+    justify-content: center;
+}
+
+.c-sidebar-nav:hover .nav-link {
+    justify-content: flex-start;
+}
+
+.nav-brand,
+.nav-item {
+    white-space: nowrap;
+}
+
+.nav-brand {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.sidebar.collapsed .nav-link {
+    padding: 10px;
+}
+
+.sidebar.collapsed .nav-text {
+    display: none;
+}
+
+.nav-link {
+    padding: 10px;
 }
