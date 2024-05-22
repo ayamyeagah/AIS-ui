@@ -8,6 +8,9 @@ import { PopupService } from './popup.service';
 
 import { AlertModule } from '@coreui/angular';
 import { SidebarModule } from '@coreui/angular';
+import { TableModule, UtilitiesModule } from '@coreui/angular';
+import { SpinnerModule } from '@coreui/angular';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,7 +37,11 @@ import { TrafficComponent } from './traffic/traffic.component';
     AppRoutingModule,
     HttpClientModule,
     AlertModule,
-    SidebarModule
+    SidebarModule,
+    TableModule,
+    UtilitiesModule,
+    SpinnerModule,
+    FormsModule
   ],
   providers: [
     MarkerService,

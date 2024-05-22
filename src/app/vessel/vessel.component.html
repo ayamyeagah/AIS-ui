@@ -1,1 +1,23 @@
-<p>vessel works!</p>
+<div class="mb-3">
+    <input [(ngModel)]="searchQuery" class="form-control" placeholder="Search by Name or MMSI">
+    <button (click)="search()" class="btn btn-primary mt-2">Search</button>
+</div>
+<table cTable hover>
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">MMSI</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let vessel of filteredVessels; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ vessel._id }}</td>
+            <td>{{ vessel.name }}</td>
+            <td>{{ vessel.type }}</td>
+          </tr>    
+    </tbody>
+</table>
+  
