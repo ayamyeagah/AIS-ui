@@ -20,16 +20,23 @@ export class MarkerService {
 
   // Function to get marker color based on type range
   private getMarkerColor(type: number): string {
-    if (type >= 10 && type <= 20) return '#40E0D0'; // Bright Red
-    if (type >= 21 && type <= 30) return '#FF8D1A'; // Bright Orange
-    if (type >= 31 && type <= 40) return '#9370DB'; // Bright Yellow
-    if (type >= 41 && type <= 50) return '#32CD32'; // Bright Green
-    if (type >= 51 && type <= 60) return '#1E90FF'; // Bright Blue
-    if (type >= 61 && type <= 70) return '#FFD700'; // Medium Purple
-    if (type >= 71 && type <= 80) return '#FF5733'; // Turquoise
-    if (type >= 81 && type <= 90) return '#3CB371'; // Medium Sea Green
-    if (type >= 91 && type <= 100) return '#FF6347'; // Tomato Red
-    return '#A9A9A9'; // Dark Gray for any other type
+    if (type >= 20 && type <= 29) return '#9ACD32'; // WIG (Wing In Ground effect)
+    if (type == 30) return '#FF8D1A'; // Fishing
+    if (type >= 31 && type <= 32) return '#9370DB'; // Towing
+    if (type == 33) return '#00008B'; // Dredging
+    if (type == 35) return '#1E90FF'; // Military
+    if (type == 36) return '#FFD700'; // Sailing
+    if (type == 37) return '#FF5733'; // Pleasure Craft
+    if (type >= 40 && type <= 49) return '#4B0082'; // HSC (High-Speed Craft)
+    if (type == 50) return '#8B0000'; // Pilot
+    if (type == 51) return '#8B4513'; // Search and Rescue
+    if (type == 52) return '#FFA500'; // Tug
+    if (type == 53) return '#40E0D0'; // Port Tender
+    if (type >= 56 && type <= 57) return '#D2691E'; // Spare
+    if (type >= 60 && type <= 69) return '#32CD32'; // Passenger
+    if (type >= 70 && type <= 79) return '#FFCA48'; // Cargo
+    if (type >= 80 && type <= 89) return '#B90E0A'; // Tanker
+    return '#A9A9A9'; // Unknown type (default)
   }
 
   // Create a circle marker with a black border
