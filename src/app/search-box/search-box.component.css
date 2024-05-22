@@ -8,7 +8,7 @@
     align-items: center;
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 5px 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -20,7 +20,7 @@
 .search-box input {
     border: none;
     outline: none;
-    color: #133355;
+    color: #29333C;
     padding: 5px;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
@@ -29,12 +29,13 @@
 }
 
 .search-box button {
-    background: #133355;
+    background: #29333C;
     color: white;
     border: none;
     padding: 5px 10px;
-    border-radius: 10px;
+    border-radius: 15px;
     cursor: pointer;
+    font-size: 14px;
     font-family: 'Roboto', sans-serif;
     /* Apply Roboto font */
 }

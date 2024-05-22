@@ -1,8 +1,21 @@
-<app-search-box *ngIf="showSearchBox"></app-search-box>
+<!-- <app-search-box *ngIf="showSearchBox"></app-search-box>
 <app-sidebar>
     <app-map></app-map>
     <app-vessel></app-vessel>
     <app-station></app-station>
     <app-traffic></app-traffic>
 </app-sidebar>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+<app-search-box *ngIf="showSearchBox"></app-search-box>
+<div class="app-container">
+    <app-sidebar>
+        <app-map></app-map>
+        <app-vessel></app-vessel>
+        <app-station></app-station>
+        <app-traffic></app-traffic>
+    </app-sidebar>
+    <div class="content-container">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<app-footer class="fixed-footer"></app-footer>

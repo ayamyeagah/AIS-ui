@@ -20,6 +20,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { VesselComponent } from './vessel/vessel.component';
 import { StationComponent } from './station/station.component';
 import { TrafficComponent } from './traffic/traffic.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TrafficComponent } from './traffic/traffic.component';
     SidebarComponent,
     VesselComponent,
     StationComponent,
-    TrafficComponent
+    TrafficComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

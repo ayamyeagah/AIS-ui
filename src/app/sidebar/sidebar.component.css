@@ -1,0 +1,30 @@
+/* sidebar.component.css */
+
+.sidebar {
+    position: fixed;
+    /* Fix it to the side */
+    width: 250px;
+    /* Match the width in the main layout */
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}

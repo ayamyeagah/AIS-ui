@@ -1,3 +1,24 @@
+.app-container {
+    display: flex;
+    flex: 1;
+}
+
+app-sidebar {
+    width: 300px;
+    /* Adjust the width as needed */
+}
+
+.content-container {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 .custom-marker i {
     display: block;
     transform: translate(-50%, -50%);
