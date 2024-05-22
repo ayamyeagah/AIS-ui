@@ -12,6 +12,7 @@ export class MarkerService {
   capitals: string = 'http://localhost:3000/api/live';
 
   private markersLayer = L.layerGroup();
+  private lastClickedMarker: L.CircleMarker | null = null;
 
   constructor(
     private http: HttpClient,
@@ -82,6 +83,16 @@ export class MarkerService {
         const marker = this.createCircleMarker(lat, lon, markerColor);
 
         marker.bindPopup(this.popupService.makeCapitalPopup(c));
+
+        // Add click event to change marker style
+        marker.on('click', () => {
+          if (this.lastClickedMarker) {
+            this.lastClickedMarker.setStyle({ weight: 1 }); // Reset the style of the last clicked marker
+          }
+          marker.setStyle({ weight: 3, color: 'black' }); // Highlight the clicked marker
+          this.lastClickedMarker = marker; // Store the clicked marker
+        });
+
         this.markersLayer.addLayer(marker);
       }
     }

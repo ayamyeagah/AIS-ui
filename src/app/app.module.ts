@@ -8,11 +8,13 @@ import { PopupService } from './popup.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    SearchBoxComponent
   ],
   imports: [
     BrowserModule,

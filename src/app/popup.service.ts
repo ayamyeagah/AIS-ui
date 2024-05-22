@@ -43,18 +43,19 @@ export class PopupService {
     if (type >= 60 && type <= 69) return 'Passenger';
     if (type >= 70 && type <= 79) return 'Cargo';
     if (type >= 80 && type <= 89) return 'Tanker';
-    return 'Unknown';
+    return 'Unknown'; // Default for any other type
   }
 
   makeCapitalPopup(data: any): string {
     const typeName = this.getTypeName(data.type);
     return `
-      <div>MMSI: ${data._id}</div>
-      <div>Name: ${data.name}</div>
-      <div>Type: ${typeName}</div>
-      <div>Lat: ${data.lat}</div>
-      <div>Lon: ${data.lon}</div>
+      <div class="popup-content">
+        <div><strong>${data.name}</strong></div>
+        <div>Type: ${typeName}</div>
+        <div>${data.lat}, ${data.lon}</div>
+      </div>
     `;
   }
 }
+
 

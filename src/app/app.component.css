@@ -2,3 +2,44 @@
     display: block;
     transform: translate(-50%, -50%);
 }
+
+/* styles.css or map.component.css */
+.leaflet-popup-close-button {
+    display: none !important;
+    /* Hide the close button */
+}
+
+.leaflet-popup-content-wrapper {
+    background: #fff;
+    border-radius: 4px;
+    /* Reduced border radius */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    /* Reduced padding */
+}
+
+.leaflet-popup-content {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    padding: 5px;
+    /* Reduced padding */
+}
+
+.leaflet-popup-tip-container {
+    display: none;
+}
+
+.leaflet-popup-content div {
+    margin: 3px 0;
+    /* Reduced margin */
+}
+
+.popup-content strong {
+    font-size: 16px;
+}
+
+.leaflet-circlemarker-clicked {
+    stroke-width: 3;
+    stroke: black;
+    fill-opacity: 1.0;
+}
