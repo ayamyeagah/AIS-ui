@@ -1,0 +1,40 @@
+.vessel-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns items at the top */
+    min-height: 80vh; /* Adjust based on your needs */
+    padding: 20px;
+  }
+  
+  .vessel-table {
+    width: 80%; /* Adjust based on your needs */
+    max-width: 1000px;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .vessel-table th, .vessel-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .vessel-table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .vessel-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .vessel-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .vessel-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
