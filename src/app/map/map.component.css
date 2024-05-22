@@ -5,6 +5,7 @@
     right: 0;
     bottom: 0;
     margin: 0px;
+    overflow: hidden;
 }
 
 .map-frame {
