@@ -2,8 +2,19 @@
   <c-sidebar-header class="border-bottom">
     <c-sidebar-brand>AIS PPNS</c-sidebar-brand>
   </c-sidebar-header>
-  <c-sidebar-nav [navItems]="navItems" />
-  <c-sidebar-footer cSidebarToggle="sidebar1" class="border-top" toggle="unfoldable" style="cursor: pointer;">
+  <c-sidebar-nav>
+    <ng-container *ngFor="let item of navItems">
+      <li class="nav-item">
+        <a [routerLink]="item.url" routerLinkActive="active" class="nav-link">
+          <i class="nav-icon {{ item.icon }}"></i> {{ item.name }}
+        </a>
+      </li>
+    </ng-container>
+  </c-sidebar-nav>
+  <c-sidebar-footer class="border-top" style="cursor: pointer;">
     <button cSidebarToggler="sidebar1" type="button" title="Toggle Sidebar"></button>
   </c-sidebar-footer>
 </c-sidebar>
+
+
+

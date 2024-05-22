@@ -7,26 +7,9 @@ import { INavData } from '@coreui/angular';
 })
 export class SidebarComponent {
   public navItems: INavData[] = [
-    {
-      name: 'Live Map',
-      url: '/live',
-      icon: 'icon-speedometer',
-    },
-    {
-      name: 'Vessel',
-      url: '/vessels',
-      icon: 'icon-speedometer',
-    },
-    {
-      name: 'Station',
-      url: '/station',
-      icon: 'icon-speedometer',
-    },
-    {
-      name: 'Traffic',
-      url: '/traffic',
-      icon: 'icon-people',
-    },
-    // Add more items as needed
+    { name: 'Live Map', url: '/', icon: 'icon-map' },
+    { name: 'Vessel', url: '/vessel', icon: 'icon-ship' },
+    { name: 'Station', url: '/station', icon: 'icon-anchor' },
+    { name: 'Traffic', url: '/traffic', icon: 'icon-graph' },
   ];
 }

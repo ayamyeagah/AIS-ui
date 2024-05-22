@@ -14,13 +14,19 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { VesselComponent } from './vessel/vessel.component';
+import { StationComponent } from './station/station.component';
+import { TrafficComponent } from './traffic/traffic.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     SearchBoxComponent,
-    SidebarComponent
+    SidebarComponent,
+    VesselComponent,
+    StationComponent,
+    TrafficComponent
   ],
   imports: [
     BrowserModule,

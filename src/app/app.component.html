@@ -1,4 +1,8 @@
-<app-search-box></app-search-box>
-<app-map></app-map>
-<app-sidebar></app-sidebar>
-  
+<app-search-box *ngIf="showSearchBox"></app-search-box>
+<app-sidebar>
+    <app-map></app-map>
+    <app-vessel></app-vessel>
+    <app-station></app-station>
+    <app-traffic></app-traffic>
+</app-sidebar>
+<router-outlet></router-outlet>
