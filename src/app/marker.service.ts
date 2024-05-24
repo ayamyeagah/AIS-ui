@@ -73,8 +73,8 @@ export class MarkerService {
     const bounds = map.getBounds();
 
     for (const c of data) {
-      const lon = c.lon;
-      const lat = c.lat;
+      const lon = c.dynamic.lon;
+      const lat = c.dynamic.lat;
 
       // Only add markers within the current view bounds
       if (bounds.contains([lat, lon])) {
