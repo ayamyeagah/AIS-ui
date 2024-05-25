@@ -1,22 +1,3 @@
-// import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class PopupService {
-
-//   constructor() { }
-
-//   makeCapitalPopup(data: any): string {
-//     return `` +
-//       `<div>MMSI: ${data._id}</div>` +
-//       `<div>Name: ${data.name}</div>` +
-//       `<div>Type: ${data.type}</div>` +
-//       `<div>Lat: ${data.lat}</div>` +
-//       `<div>Lon: ${data.lon}</div>`
-//   }
-// }
-
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -45,17 +26,6 @@ export class PopupService {
     if (type >= 80 && type <= 89) return 'Tanker';
     return 'Unknown'; // Default for any other type
   }
-
-  // makeCapitalPopup(data: any): string {
-  //   const typeName = this.getTypeName(data.static.typeAndCargo);
-  //   return `
-  //     <div class="popup-content">
-  //       <div><strong>${data.static.name}</strong></div>
-  //       <div>Type: ${typeName}</div>
-  //       <div>${data.dynamic.lat}, ${data.dynamic.lon}</div>
-  //     </div>
-  //   `;
-  // }
 
   makeCapitalPopup(data: any): string {
     const typeName = this.getTypeName(data.type);

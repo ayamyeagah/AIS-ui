@@ -1,21 +1,20 @@
 <div class="vessel-container">
-    <table cTable hover class="vessel-table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">MMSI</th>
-          <th scope="col">Name</th>
-          <th scope="col">Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let vessel of filteredVessels; let i = index">
-          <th scope="row">{{ i + 1 }}</th>
-          <td>{{ vessel._id }}</td>
-          <td>{{ vessel.name }}</td>
-          <td>{{ vessel.type }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <table cTable hover class="vessel-table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">MMSI</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vessel of filteredVessels; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ vessel._id }}</td>
+        <td>{{ vessel.name }}</td>
+        <td>{{ vessel.typeDescription }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-  
