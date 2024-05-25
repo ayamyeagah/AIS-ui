@@ -47,12 +47,12 @@ export class PopupService {
   }
 
   makeCapitalPopup(data: any): string {
-    const typeName = this.getTypeName(data.type);
+    const typeName = this.getTypeName(data.static.typeAndCargo);
     return `
       <div class="popup-content">
-        <div><strong>${data.name}</strong></div>
+        <div><strong>${data.static.name}</strong></div>
         <div>Type: ${typeName}</div>
-        <div>${data.lat}, ${data.lon}</div>
+        <div>${data.dynamic.lat}, ${data.dynamic.lon}</div>
       </div>
     `;
   }

@@ -78,7 +78,7 @@ export class MarkerService {
 
       // Only add markers within the current view bounds
       if (bounds.contains([lat, lon])) {
-        const type = c.type;
+        const type = c.static.typeAndCargo;
         const markerColor = this.getMarkerColor(type);
         const marker = this.createCircleMarker(lat, lon, markerColor);
 
