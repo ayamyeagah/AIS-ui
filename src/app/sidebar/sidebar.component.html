@@ -1,24 +1,10 @@
-<!-- <c-sidebar visible #sidebar1="cSidebar" class="border-end">
-  <c-sidebar-header class="border-bottom">
-    <c-sidebar-brand>AIS PPNS</c-sidebar-brand>
-  </c-sidebar-header>
-  <c-sidebar-nav>
-    <ng-container *ngFor="let item of navItems">
-      <li class="nav-item">
-        <a [routerLink]="item.url" routerLinkActive="active" class="nav-link">
-          <i class="nav-icon {{ item.icon }}"></i> {{ item.name }}
-        </a>
-      </li>
-    </ng-container>
-  </c-sidebar-nav>
-  <c-sidebar-footer class="border-top" style="cursor: pointer;">
-    <button cSidebarToggler="sidebar1" type="button" title="Toggle Sidebar"></button>
-  </c-sidebar-footer>
-</c-sidebar> -->
-
 <c-sidebar visible #sidebar1="cSidebar" class="border-end sidebar sidebar-dark">
   <c-sidebar-header class="border-bottom">
-    <c-sidebar-brand>AIS PPNS</c-sidebar-brand>
+    <c-sidebar-brand
+      [brandFull]="{src:'../../assets/ais-sidebar.png', width: 100, height: 32, alt:'AIS PPNS'}" 
+      [brandNarrow]="{src:'../../assets/ais-tab.png', width: 40, height: 40, alt:'AIS-PPNS'}"
+      [routerLink]="['/']">
+    </c-sidebar-brand>
   </c-sidebar-header>
   <c-sidebar-nav>
     <ng-container *ngFor="let item of navItems">

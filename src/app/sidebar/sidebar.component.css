@@ -27,7 +27,12 @@
     /* Expanded width on hover */
 }
 
-.c-sidebar-header,
+.c-sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .c-sidebar-footer {
     overflow: hidden;
 }
