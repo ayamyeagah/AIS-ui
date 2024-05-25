@@ -46,13 +46,25 @@ export class PopupService {
     return 'Unknown'; // Default for any other type
   }
 
+  // makeCapitalPopup(data: any): string {
+  //   const typeName = this.getTypeName(data.static.typeAndCargo);
+  //   return `
+  //     <div class="popup-content">
+  //       <div><strong>${data.static.name}</strong></div>
+  //       <div>Type: ${typeName}</div>
+  //       <div>${data.dynamic.lat}, ${data.dynamic.lon}</div>
+  //     </div>
+  //   `;
+  // }
+
   makeCapitalPopup(data: any): string {
-    const typeName = this.getTypeName(data.static.typeAndCargo);
+    const typeName = this.getTypeName(data.type);
     return `
       <div class="popup-content">
-        <div><strong>${data.static.name}</strong></div>
+        <div><strong>${data.name}</strong></div>
         <div>Type: ${typeName}</div>
-        <div>${data.dynamic.lat}, ${data.dynamic.lon}</div>
+        <div>${data.lat}, ${data.lon}</div>
+        <div>Position Received: <strong>${data.lastReceived}</strong></div>
       </div>
     `;
   }

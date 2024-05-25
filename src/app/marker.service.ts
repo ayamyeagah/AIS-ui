@@ -73,12 +73,16 @@ export class MarkerService {
     const bounds = map.getBounds();
 
     for (const c of data) {
-      const lon = c.dynamic.lon;
-      const lat = c.dynamic.lat;
+      // const lon = c.dynamic.loc.coordinates[0];
+      // const lat = c.dynamic.loc.coordinates[1];
+
+      const lon = c.lon;
+      const lat = c.lat;
 
       // Only add markers within the current view bounds
       if (bounds.contains([lat, lon])) {
-        const type = c.static.typeAndCargo;
+        // const type = c.static.typeAndCargo;
+        const type = c.type;
         const markerColor = this.getMarkerColor(type);
         const marker = this.createCircleMarker(lat, lon, markerColor);
 
