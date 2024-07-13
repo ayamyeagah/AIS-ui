@@ -11,3 +11,9 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+.ship-icon svg {
+    width: 70px;
+    height: 70px;
+    border-color: gray;
+}

@@ -22,10 +22,17 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MapComponent implements AfterViewInit {
   private map!: L.Map
 
+  constructor(private markerService: MarkerService) { }
+
+  ngAfterViewInit(): void {
+    this.initMap();
+    this.markerService.makeCapitalCircleMarkers(this.map);
+  }
+
   private initMap(): void {
     this.map = L.map('map', {
-      center: [-7.25741, 112.74523],
-      zoom: 8,
+      center: [-7.181611970939602, 112.71309354738638],
+      zoom: 13,
       zoomControl: false
     });
 
@@ -46,12 +53,5 @@ export class MapComponent implements AfterViewInit {
 
     baseLayer.addTo(this.map);
     seamarkLayer.addTo(this.map);
-  }
-
-  constructor(private markerService: MarkerService) { }
-
-  ngAfterViewInit(): void {
-    this.initMap();
-    this.markerService.makeCapitalCircleMarkers(this.map);
   }
 }
