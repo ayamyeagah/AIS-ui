@@ -34,7 +34,13 @@ export class PopupService {
     const lat = parseFloat(data.location.coordinates[1]).toFixed(5);
     const lon = parseFloat(data.location.coordinates[0]).toFixed(5);
 
-    const updatedAt = new Date(data.updatedAt.$date);
+    const updatedAt = new Date(data.updatedAt);
+
+    if (isNaN(updatedAt.getTime())) {
+      console.error('Invalid updatedAt value:', data.updatedAt);
+      throw new Error('Invalid updatedAt value');
+    }
+
     const timeAgo = formatDistanceToNow(updatedAt, { addSuffix: true });
 
     return `
