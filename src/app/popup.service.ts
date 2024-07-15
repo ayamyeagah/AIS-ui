@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { formatDistanceToNow } from 'date-fns';
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +30,18 @@ export class PopupService {
 
   makeCapitalPopup(data: any): string {
     const typeName = this.getTypeName(data.type);
+
+    const lat = parseFloat(data.location.coordinates[1]).toFixed(5);
+    const lon = parseFloat(data.location.coordinates[0]).toFixed(5);
+
+    const updatedAt = new Date(data.updatedAt.$date);
+    const timeAgo = formatDistanceToNow(updatedAt, { addSuffix: true });
+
     return `
       <div class="popup-content">
-        <div><strong>${data.name}</strong></div>
-        <div>Type: ${typeName}</div>
-        <div>${data.lat}, ${data.lon}</div>
-        <div>Position Received: <strong>${data.lastReceived}</strong></div>
+        <div><strong>${data.name} | ${typeName}</strong></div>
+        <div>${lat}, ${lon}</div>
+        <div>Received: <strong>${timeAgo}</strong></div>
       </div>
     `;
   }

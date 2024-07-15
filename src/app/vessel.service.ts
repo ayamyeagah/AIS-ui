@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class VesselService {
-  private apiUrl = 'http://localhost:3000/api/live'; // Replace with your backend URL
+  private apiUrl = 'http://localhost:3000/api/vessels';
 
   constructor(private http: HttpClient) { }
 

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { VesselService } from '../vessel.service';
 
 interface Vessel {
-  _id: number;
+  mmsi: number;
+  imo: number;
   name: string;
-  type: number;
+  typeAndCargo: number;
   typeDescription?: string;
 }
 
@@ -17,7 +18,7 @@ export class VesselComponent implements OnInit {
   vessels: Vessel[] = [];
   filteredVessels: Vessel[] = [];
 
-  // Define a mapping of type numbers to descriptions
+  // Define a mapping of typeAndCargo numbers to descriptions
   private typeMapping: { [key: number]: string } = {
     0: 'Unknown',
     30: 'Fishing',
@@ -57,14 +58,20 @@ export class VesselComponent implements OnInit {
     const result: Vessel[] = [];
 
     data.forEach(vessel => {
-      if (!uniqueVessels[vessel._id]) {
-        uniqueVessels[vessel._id] = true;
-        // Map the type number to the type description
-        vessel.typeDescription = this.typeMapping[vessel.type] || 'Other';
+      if (!uniqueVessels[vessel.mmsi]) {
+        uniqueVessels[vessel.mmsi] = true;
+        vessel.name = vessel.name || 'Unknown';
+        vessel.imo = vessel.imo || 0;
+        // Map the typeAndCargo number to the typeAndCargo description
+        vessel.typeDescription = this.typeMapping[vessel.typeAndCargo] || 'Other';
         result.push(vessel);
       }
     });
 
-    return result.sort((a, b) => a.name.localeCompare(b.name));
+    return result.sort((a, b) => {
+      const nameA = a.name || '';
+      const nameB = b.name || '';
+      return nameA.localeCompare(nameB);
+    });
   }
 }

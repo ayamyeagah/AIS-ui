@@ -13,6 +13,11 @@ import { SpinnerModule } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
@@ -22,6 +27,7 @@ import { VesselComponent } from './vessel/vessel.component';
 import { StationComponent } from './station/station.component';
 import { TrafficComponent } from './traffic/traffic.component';
 import { FooterComponent } from './footer/footer.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -46,12 +52,17 @@ import { FooterComponent } from './footer/footer.component';
     SpinnerModule,
     FormsModule,
     IconModule,
-    IconSetModule
+    IconSetModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule
   ],
   providers: [
     MarkerService,
     PopupService,
-    IconSetService
+    IconSetService,
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
