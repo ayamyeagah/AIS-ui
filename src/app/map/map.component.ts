@@ -92,4 +92,13 @@ export class MapComponent implements AfterViewInit {
       button.style.color = this.isHeatmapOn ? 'white' : 'black';
     }
   }
+
+  onSearch(mmsi: string): void {
+    const mmsiNumber = parseInt(mmsi, 10);
+    if (!isNaN(mmsiNumber)) {
+      this.markerService.focusOnMarker(mmsiNumber);
+    } else {
+      console.error('MMSI tidak valid:', mmsi);
+    }
+  }
 }

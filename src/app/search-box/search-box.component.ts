@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search-box',
@@ -8,11 +8,13 @@ import { Component } from '@angular/core';
 export class SearchBoxComponent {
   searchQuery: string = '';
 
+  @Output() search: EventEmitter<string> = new EventEmitter<string>();
+
   constructor() { }
 
   performSearch() {
     console.log('Searching for:', this.searchQuery);
-    // Implement the search functionality here
+    this.search.emit(this.searchQuery);
   }
 }
 

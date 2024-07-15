@@ -11,7 +11,7 @@ import { SocketService } from './socket.service';
 })
 export class MarkerService {
   private markersLayer = L.layerGroup();
-  private markersMap = new Map<number, L.Marker | L.CircleMarker>();
+  public markersMap = new Map<number, L.Marker | L.CircleMarker>();
   private heatmapLayer!: L.HeatLayer;
   private heatmapEnabled: boolean = false;
   private heatmapData: [number, number, number][] = [];
@@ -120,6 +120,16 @@ export class MarkerService {
 
     if (this.heatmapEnabled) {
       this.heatmapLayer.setLatLngs(this.heatmapData);
+    }
+  }
+
+  public focusOnMarker(mmsi: number): void {
+    const marker = this.markersMap.get(mmsi);
+    if (marker) {
+      this.map.setView(marker.getLatLng(), 12); // Atur tingkat zoom sesuai kebutuhan
+      marker.openPopup(); // Buka popup jika ada
+    } else {
+      console.log('Marker Not Found for MMSI:', mmsi);
     }
   }
 
