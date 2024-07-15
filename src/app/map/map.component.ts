@@ -20,13 +20,15 @@ L.Marker.prototype.options.icon = iconDefault;
   styleUrl: './map.component.css'
 })
 export class MapComponent implements AfterViewInit {
-  private map!: L.Map
+  private map!: L.Map;
+  public isHeatmapOn: boolean = false;
 
   constructor(private markerService: MarkerService) { }
 
   ngAfterViewInit(): void {
     this.initMap();
     this.markerService.makeCapitalCircleMarkers(this.map);
+    this.addHeatmapControl();
   }
 
   private initMap(): void {
@@ -53,5 +55,41 @@ export class MapComponent implements AfterViewInit {
 
     baseLayer.addTo(this.map);
     seamarkLayer.addTo(this.map);
+  }
+
+  private addHeatmapControl(): void {
+    const heatmapControl = L.Control.extend({
+      options: {
+        position: 'bottomright'
+      },
+      onAdd: (map: L.Map) => {
+        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        container.innerHTML = '<button id="heatmapToggle" style="background-color: white; border: none; cursor: pointer;">Heatmap</button>';
+        container.style.backgroundColor = 'white';
+        container.style.width = '68px';
+        container.style.height = '28px';
+        container.style.display = 'flex';
+        container.style.alignItems = 'center';
+        container.style.justifyContent = 'center';
+        L.DomEvent.on(container, 'click', this.toggleHeatmap, this);
+        return container;
+      }
+    });
+
+    this.map.addControl(new heatmapControl());
+  }
+
+  private toggleHeatmap(): void {
+    this.isHeatmapOn = !this.isHeatmapOn;
+    this.markerService.toggleHeatmap();
+    this.updateHeatmapButton();
+  }
+
+  private updateHeatmapButton(): void {
+    const button = document.getElementById('heatmapToggle');
+    if (button) {
+      button.style.backgroundColor = this.isHeatmapOn ? '#29333C' : 'white';
+      button.style.color = this.isHeatmapOn ? 'white' : 'black';
+    }
   }
 }

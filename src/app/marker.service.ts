@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet-rotatedmarker';
+import 'leaflet.heat';
 import { PopupService } from './popup.service';
 import { SocketService } from './socket.service';
 
@@ -11,6 +12,9 @@ import { SocketService } from './socket.service';
 export class MarkerService {
   private markersLayer = L.layerGroup();
   private markersMap = new Map<number, L.Marker | L.CircleMarker>();
+  private heatmapLayer!: L.HeatLayer;
+  private heatmapEnabled: boolean = false;
+  private heatmapData: [number, number, number][] = [];
   private map!: L.Map;
 
   constructor(
@@ -68,6 +72,12 @@ export class MarkerService {
   makeCapitalCircleMarkers(map: L.Map): void {
     this.map = map;
     this.markersLayer.addTo(map);
+    this.heatmapLayer = L.heatLayer(this.heatmapData, {
+      radius: 15,
+      gradient: { 0.5: 'blue', 0.65: 'lime', 1: 'red' },
+      blur: 15,
+      maxZoom: 8
+    })
   }
 
   private updateMarker(data: any): void {
@@ -104,6 +114,22 @@ export class MarkerService {
       marker.bindPopup(this.popupService.makeCapitalPopup(data));
       this.markersLayer.addLayer(marker);
       this.markersMap.set(mmsi, marker);
+    }
+
+    this.heatmapData.push([lat, lon, 1]);
+
+    if (this.heatmapEnabled) {
+      this.heatmapLayer.setLatLngs(this.heatmapData);
+    }
+  }
+
+  toggleHeatmap(): void {
+    this.heatmapEnabled = !this.heatmapEnabled;
+    if (this.heatmapEnabled) {
+      this.heatmapLayer.addTo(this.map);
+      this.heatmapLayer.setLatLngs(this.heatmapData);
+    } else {
+      this.map.removeLayer(this.heatmapLayer);
     }
   }
 
