@@ -126,8 +126,8 @@ export class MarkerService {
   public focusOnMarker(mmsi: number): void {
     const marker = this.markersMap.get(mmsi);
     if (marker) {
-      this.map.setView(marker.getLatLng(), 12); // Atur tingkat zoom sesuai kebutuhan
-      marker.openPopup(); // Buka popup jika ada
+      this.map.setView(marker.getLatLng(), 15);
+      marker.openPopup();
     } else {
       console.log('Marker Not Found for MMSI:', mmsi);
     }
