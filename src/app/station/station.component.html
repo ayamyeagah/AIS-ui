@@ -1,4 +1,16 @@
-<div class="centered-text">
-    <p>Station Feature</p>
-    <p>Cooming Soon</p>
+<div class="header">
+    <h1>Station in Recovery</h1>
+</div>
+<div class="grid-container">
+    <div class="card" *ngFor="let station of stations; let i = index" [ngClass]="'card-color-' + i" (click)="navigateToDetail(station.name)">
+        <h2>{{ station.name }}</h2>
+        <div class="highlight">
+            <p>Jumlah Kapal</p>
+            <p class="highlight-value">{{ getTotalShips(station.data) }}</p>
+        </div>
+        <div class="highlight">
+            <p>Traffic in Area</p>
+            <p class="highlight-value">{{ getDensity(station.data, station.area).toFixed(3) }}</p>
+        </div>
+    </div>
 </div>
