@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MarkerService } from './marker.service';
 import { PopupService } from './popup.service';
 
-import { AlertModule } from '@coreui/angular';
-import { SidebarModule } from '@coreui/angular';
-import { TableModule, UtilitiesModule } from '@coreui/angular';
-import { SpinnerModule } from '@coreui/angular';
-import { FormsModule } from '@angular/forms';
+import { AlertModule, SidebarModule, TableModule, UtilitiesModule, SpinnerModule } from '@coreui/angular';
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 
 import { MatTableModule } from '@angular/material/table';
@@ -25,7 +22,6 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { VesselComponent } from './vessel/vessel.component';
 import { StationComponent } from './station/station.component';
-import { TrafficComponent } from './traffic/traffic.component';
 import { FooterComponent } from './footer/footer.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -37,7 +33,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     SidebarComponent,
     VesselComponent,
     StationComponent,
-    TrafficComponent,
     FooterComponent
   ],
   imports: [
@@ -56,7 +51,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
   ],
   providers: [
     MarkerService,

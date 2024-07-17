@@ -15,7 +15,6 @@ export class SidebarComponent {
   public navItems: INavData[] = [
     { name: 'Live Map', url: '/', iconComponent: { name: 'cilGlobeAlt' } },
     { name: 'Vessel', url: '/vessel', iconComponent: { name: 'cilBoatAlt' } },
-    { name: 'Station', url: '/station', iconComponent: { name: 'cilBuilding' } },
-    { name: 'Traffic', url: '/traffic', iconComponent: { name: 'cilChart' } },
+    { name: 'Station', url: '/station', iconComponent: { name: 'cilBuilding' } }
   ];
 }
