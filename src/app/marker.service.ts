@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet-rotatedmarker';
@@ -18,6 +19,7 @@ export class MarkerService {
   private map!: L.Map;
 
   constructor(
+    private http: HttpClient,
     private popupService: PopupService,
     private socketService: SocketService
   ) {
@@ -77,7 +79,56 @@ export class MarkerService {
       gradient: { 0.5: 'blue', 0.65: 'lime', 1: 'red' },
       blur: 15,
       maxZoom: 8
-    })
+    });
+
+    this.loadAllVessels();
+  }
+
+  private loadAllVessels(): void {
+    const apiUrl = 'http://localhost:3000/api/live';
+    const now = new Date();
+    const last24Hours = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+
+    this.http.get<any[]>(apiUrl).subscribe(data => {
+      data.forEach(vessel => {
+        const mmsi = vessel.mmsi;
+        const lon = vessel.dynamic?.lon || vessel.location?.coordinates[0] || null;
+        const lat = vessel.dynamic?.lat || vessel.location?.coordinates[1] || null;
+        const heading = vessel.dynamic?.heading || null;
+        const type = vessel.type;
+
+        if (this.markersMap.has(mmsi)) {
+          return; // Lewatkan jika MMSI sudah ada
+        }
+
+        if (lon === null || lat === null) {
+          return;
+        }
+
+        const markerColor = this.getMarkerColor(type);
+
+        let marker: L.Marker | L.CircleMarker;
+
+        if (heading !== null && heading !== undefined && heading >= 0 && heading <= 360) {
+          marker = this.createShipMarker(lat, lon, heading, markerColor);
+        } else {
+          marker = this.createCircleMarker(lat, lon, markerColor);
+        }
+
+        marker.bindPopup(this.popupService.makeCapitalPopup(vessel));
+        this.markersLayer.addLayer(marker);
+        this.markersMap.set(vessel.mmsi, marker);
+
+        // Tambahkan data ke heatmap dengan intensitas default 1
+        this.heatmapData.push([lat, lon, 1]);
+      });
+
+      if (this.heatmapEnabled) {
+        this.heatmapLayer.setLatLngs(this.heatmapData);
+      }
+    }, error => {
+      console.error('Error fetching vessels data:', error);
+    });
   }
 
   private updateMarker(data: any): void {
